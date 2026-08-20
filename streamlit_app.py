@@ -1,6 +1,6 @@
 # Import python packages
 import streamlit as st
-import os
+#import os
 #from snowflake.snowpark.context import get_active_session #needed to add this line to get active session info
 from snowflake.snowpark.functions import col    #for selecting specific columns in session table
 
@@ -22,8 +22,8 @@ st.write(
 name_on_order=st.text_input('Enter your name:') #don’t use labels with apostrophes like “Gina’s Smoothie.” 
 st.write('Name on smoothie is:',name_on_order)
 
-cxn=st.connection("snowflake")
-session=cxn.session()
+cnx = st.connection("snowflake")
+session = cnx.session()
 #session = get_active_session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('Fruit_Name'))
 #st.dataframe(data=my_dataframe, use_container_width=True)
